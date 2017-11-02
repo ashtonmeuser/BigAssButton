@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BigAssButton"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A button with rounded corners and horizontally aligned title and image."
   s.description  = "A reusable, customizable UIButton that horizontally aligns the button's image and title. Works with Storyboards & Interface Builder."
   s.homepage     = "https://github.com/ashtonmeuser/BigAssButton"
