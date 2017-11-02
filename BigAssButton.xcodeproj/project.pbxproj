@@ -10,6 +10,7 @@
 		C0AFC8C01FABDD5C00487FD6 /* BigAssButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0AFC8B61FABDD5C00487FD6 /* BigAssButton.framework */; };
 		C0AFC8C51FABDD5C00487FD6 /* BigAssButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AFC8C41FABDD5C00487FD6 /* BigAssButtonTests.swift */; };
 		C0AFC8C71FABDD5C00487FD6 /* BigAssButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C0AFC8B91FABDD5C00487FD6 /* BigAssButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0AFC8D11FABDDAB00487FD6 /* BigAssButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AFC8D01FABDDAB00487FD6 /* BigAssButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		C0AFC8BF1FABDD5C00487FD6 /* BigAssButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigAssButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AFC8C41FABDD5C00487FD6 /* BigAssButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAssButtonTests.swift; sourceTree = "<group>"; };
 		C0AFC8C61FABDD5C00487FD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0AFC8D01FABDDAB00487FD6 /* BigAssButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAssButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		C0AFC8B81FABDD5C00487FD6 /* BigAssButton */ = {
 			isa = PBXGroup;
 			children = (
+				C0AFC8D21FABDF1A00487FD6 /* Classes */,
 				C0AFC8B91FABDD5C00487FD6 /* BigAssButton.h */,
 				C0AFC8BA1FABDD5C00487FD6 /* Info.plist */,
 			);
@@ -84,6 +87,14 @@
 				C0AFC8C61FABDD5C00487FD6 /* Info.plist */,
 			);
 			path = BigAssButtonTests;
+			sourceTree = "<group>";
+		};
+		C0AFC8D21FABDF1A00487FD6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C0AFC8D01FABDDAB00487FD6 /* BigAssButton.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					C0AFC8B51FABDD5C00487FD6 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					C0AFC8BE1FABDD5C00487FD6 = {
@@ -196,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0AFC8D11FABDDAB00487FD6 /* BigAssButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +347,7 @@
 		C0AFC8CB1FABDD5C00487FD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Ashton-Meuser.BigAssButton";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +370,7 @@
 		C0AFC8CC1FABDD5C00487FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +392,7 @@
 		C0AFC8CE1FABDD5C00487FD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EJMY5Z83L;
 				INFOPLIST_FILE = BigAssButtonTests/Info.plist;
@@ -390,6 +407,7 @@
 		C0AFC8CF1FABDD5C00487FD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EJMY5Z83L;
 				INFOPLIST_FILE = BigAssButtonTests/Info.plist;
