@@ -73,7 +73,7 @@
 		C0AFC8B81FABDD5C00487FD6 /* BigAssButton */ = {
 			isa = PBXGroup;
 			children = (
-				C0AFC8D21FABDF1A00487FD6 /* Classes */,
+				C0AFC8D01FABDDAB00487FD6 /* BigAssButton.swift */,
 				C0AFC8B91FABDD5C00487FD6 /* BigAssButton.h */,
 				C0AFC8BA1FABDD5C00487FD6 /* Info.plist */,
 			);
@@ -87,14 +87,6 @@
 				C0AFC8C61FABDD5C00487FD6 /* Info.plist */,
 			);
 			path = BigAssButtonTests;
-			sourceTree = "<group>";
-		};
-		C0AFC8D21FABDF1A00487FD6 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				C0AFC8D01FABDDAB00487FD6 /* BigAssButton.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
