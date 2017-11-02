@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BigAssButton"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A button with rounded corners and horizontally aligned title and image."
 
   # This description is used to generate tags and improve search results.
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://github.com/ashtonmeuser/BigAssButton.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ashtonmeuser/BigAssButton.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
