@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class BigAssButton: UIButton {
     
-    @IBInspectable var cornerRadius: CGFloat = 50.0 {
+    @IBInspectable var cornerRadius: CGFloat = 30.0 {
         didSet {
             layoutSubviews()
         }
@@ -30,16 +30,18 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageView?.contentMode = .scaleAspectFit
-        adjustsImageWhenHighlighted = false
-        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
-        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
+        tintColor = titleColor(for: .normal)
         setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
         setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
     }
@@ -88,6 +90,12 @@ import UIKit
         let labelString = NSString(string: text)
         let titleSize = labelString.size(withAttributes: [NSAttributedStringKey.font: font])
         let totalHeight = size + titleSize.height + verticalSpacing
+        
+        guard frame.height >= totalHeight + verticalSpacing*2.0 else { // Small button, use text only
+            imageView.image = nil
+            titleLabel?.frame = CGRect(x: (frame.width-titleSize.width)/2.0, y: (frame.height-titleSize.height)/2.0, width: titleSize.width, height: titleSize.height)
+            return
+        }
         
         imageView.frame = CGRect(x: (frame.width-size)/2.0, y: (frame.height-totalHeight)/2.0, width: size*aspectRatio, height: size)
         titleLabel?.frame = CGRect(x: (frame.width-titleSize.width)/2.0, y: (frame.height+totalHeight)/2.0-titleSize.height, width: titleSize.width, height: titleSize.height)
