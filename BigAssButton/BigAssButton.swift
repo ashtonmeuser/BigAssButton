@@ -31,11 +31,17 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageView?.contentMode = .scaleAspectFit
+        adjustsImageWhenHighlighted = false
+        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
+        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         imageView?.contentMode = .scaleAspectFit
+        adjustsImageWhenHighlighted = false
+        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
+        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
     }
     
     override var isHighlighted: Bool {
