@@ -22,26 +22,69 @@ import UIKit
         }
     }
     
-    override func layoutSubviews() {
-        alignVertical()
-        super.layoutSubviews()
-        layer.cornerRadius = cornerRadius // Should be called after laying out subviews
-        clipsToBounds = true
+    @IBInspectable var imageSize: CGFloat = 0.0 {
+        didSet {
+            layoutSubviews()
+        }
     }
     
-    func alignVertical() {
-        guard let imageSize = self.imageView?.image?.size,
-            let text = self.titleLabel?.text,
-            let font = self.titleLabel?.font else {
-                return
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        imageView?.contentMode = .scaleAspectFit
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        imageView?.contentMode = .scaleAspectFit
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            self.imageView?.tintColor = self.titleLabel?.textColor
         }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            self.imageView?.tintColor = self.titleLabel?.textColor
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = cornerRadius // Should be called after laying out subviews
+        clipsToBounds = true
+        
+        guard let imageView = imageView,
+            let image = imageView.image else { // Text only, use default behavior
+            return
+        }
+        
+        let aspectRatio = image.size.width/image.size.height
+        var size: CGFloat = 0.0
+        switch imageSize {
+        case 0.0:
+            size = image.size.height
+        case 0.0...1.0:
+            size = frame.width*imageSize
+        default:
+            size = imageSize
+        }
+        
+        guard let text = self.titleLabel?.text,
+            let font = self.titleLabel?.font else { // Image only, center image
+            imageView.frame = CGRect(x: (frame.width-size)/2.0, y: (frame.height-size)/2.0, width: size*aspectRatio, height: size)
+            return
+        }
+        
+        // Arrange text and image
         let labelString = NSString(string: text)
         let titleSize = labelString.size(withAttributes: [NSAttributedStringKey.font: font])
-        let edgeOffset = abs(titleSize.height - imageSize.height) / 2.0;
+        let totalHeight = size + titleSize.height + verticalSpacing
         
-        titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -imageSize.width, bottom: -(imageSize.height + verticalSpacing), right: 0.0)
-        imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + verticalSpacing), left: 0.0, bottom: 0.0, right: -titleSize.width)
-        contentEdgeInsets = UIEdgeInsets(top: edgeOffset, left: 0.0, bottom: edgeOffset, right: 0.0)
+        imageView.frame = CGRect(x: (frame.width-size)/2.0, y: (frame.height-totalHeight)/2.0, width: size*aspectRatio, height: size)
+        titleLabel?.frame = CGRect(x: (frame.width-titleSize.width)/2.0, y: (frame.height+totalHeight)/2.0-titleSize.height, width: titleSize.width, height: titleSize.height)
     }
 }
 
