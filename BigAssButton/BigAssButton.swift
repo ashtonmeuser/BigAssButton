@@ -99,12 +99,6 @@ import UIKit
         let titleSize = labelString.size(withAttributes: [NSAttributedStringKey.font: font])
         let totalHeight = size + titleSize.height + verticalSpacing
         
-        guard frame.height >= totalHeight + verticalSpacing*2.0 else { // Small button, use text only
-            imageView.image = nil
-            titleLabel?.frame = CGRect(x: (frame.width-titleSize.width)/2.0, y: (frame.height-titleSize.height)/2.0, width: titleSize.width, height: titleSize.height)
-            return
-        }
-        
         imageView.frame = CGRect(x: (frame.width-size)/2.0, y: (frame.height-totalHeight)/2.0, width: size*aspectRatio, height: size)
         titleLabel?.frame = CGRect(x: (frame.width-titleSize.width)/2.0, y: (frame.height+totalHeight)/2.0-titleSize.height, width: titleSize.width, height: titleSize.height)
     }
