@@ -41,9 +41,11 @@ import UIKit
     func setup() {
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
-        tintColor = titleColor(for: .normal)
+        adjustsImageWhenDisabled = false
+        imageView?.tintColor = titleColor(for: .normal)
         setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
         setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
+        alpha = isEnabled == true ? 1.0 : 0.5
     }
     
     override var isHighlighted: Bool {
@@ -55,6 +57,12 @@ import UIKit
     override var isSelected: Bool {
         didSet {
             self.imageView?.tintColor = self.titleLabel?.textColor
+        }
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled == true ? 1.0 : 0.5
         }
     }
     
