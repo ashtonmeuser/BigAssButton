@@ -39,6 +39,7 @@ import UIKit
     }
     
     func setup() {
+        isExclusiveTouch = true
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
         adjustsImageWhenDisabled = false
