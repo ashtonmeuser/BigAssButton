@@ -42,9 +42,7 @@ import UIKit
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
         adjustsImageWhenDisabled = false
-        imageView?.tintColor = titleColor(for: .normal)
-        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
-        setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
+        setTitleColor(titleColor(for: .normal), for: .normal) // Sets highlights, tint, etc.
         alpha = isEnabled == true ? 1.0 : 0.5
     }
     
@@ -63,6 +61,15 @@ import UIKit
     override var isEnabled: Bool {
         didSet {
             alpha = isEnabled == true ? 1.0 : 0.5
+        }
+    }
+    
+    override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+        super.setTitleColor(color, for: state)
+        if state == .normal {
+            imageView?.tintColor = titleColor(for: .normal)
+            setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
+            setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
         }
     }
     
