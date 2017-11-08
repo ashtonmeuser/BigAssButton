@@ -12,21 +12,23 @@ import UIKit
     
     @IBInspectable var cornerRadius: CGFloat = 30.0 {
         didSet {
-            layoutSubviews()
+            setNeedsLayout()
         }
     }
     
     @IBInspectable var verticalSpacing: CGFloat = 6.0 {
         didSet {
-            layoutSubviews()
+            setNeedsLayout()
         }
     }
     
     @IBInspectable var imageSize: CGFloat = 0.0 {
         didSet {
-            layoutSubviews()
+            setNeedsLayout()
         }
     }
+    
+    @IBInspectable var foregroundColor: UIColor = .white
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,34 +45,32 @@ import UIKit
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
         adjustsImageWhenDisabled = false
-        setTitleColor(titleColor(for: .normal), for: .normal) // Sets highlights, tint, etc.
+        setColors()
         alpha = isEnabled == true ? 1.0 : 0.5
+    }
+    
+    func setColors() {
+        setTitleColor(foregroundColor, for: .highlighted)
+        setTitleColor(foregroundColor.withAlphaComponent(0.5), for: .highlighted)
+        setTitleColor(foregroundColor.withAlphaComponent(0.5), for: .selected)
+        imageView?.tintColor = foregroundColor
     }
     
     override var isHighlighted: Bool {
         didSet {
-            self.imageView?.tintColor = self.titleLabel?.textColor
+            imageView?.tintColor = foregroundColor.withAlphaComponent(isHighlighted == true ? 0.5 : 1.0)
         }
     }
     
     override var isSelected: Bool {
         didSet {
-            self.imageView?.tintColor = self.titleLabel?.textColor
+            imageView?.tintColor = foregroundColor.withAlphaComponent(isSelected == true ? 0.5 : 1.0)
         }
     }
     
     override var isEnabled: Bool {
         didSet {
             alpha = isEnabled == true ? 1.0 : 0.5
-        }
-    }
-    
-    override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
-        super.setTitleColor(color, for: state)
-        if state == .normal {
-            imageView?.tintColor = titleColor(for: .normal)
-            setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .highlighted)
-            setTitleColor(titleColor(for: .normal)?.withAlphaComponent(0.5), for: .selected)
         }
     }
     
