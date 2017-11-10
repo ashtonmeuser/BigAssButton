@@ -28,7 +28,11 @@ import UIKit
         }
     }
     
-    @IBInspectable var foregroundColor: UIColor = .white
+    @IBInspectable var foregroundColor: UIColor = .white {
+        didSet {
+            setColors()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +54,7 @@ import UIKit
     }
     
     func setColors() {
-        setTitleColor(foregroundColor, for: .highlighted)
+        setTitleColor(foregroundColor, for: .normal)
         setTitleColor(foregroundColor.withAlphaComponent(0.5), for: .highlighted)
         setTitleColor(foregroundColor.withAlphaComponent(0.5), for: .selected)
         imageView?.tintColor = foregroundColor
