@@ -45,6 +45,7 @@ import UIKit
     }
     
     func setup() {
+        clipsToBounds = true
         isExclusiveTouch = true
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
@@ -82,7 +83,6 @@ import UIKit
         super.layoutSubviews()
         
         layer.cornerRadius = cornerRadius // Should be called after laying out subviews
-        clipsToBounds = true
         
         guard let imageView = imageView,
             let image = imageView.image else { // Text only, use default behavior
